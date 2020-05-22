@@ -17,8 +17,8 @@ namespace PersonMvc.Controllers
         {
             using (IDbConnection db = new SqlConnection("Data Source = localhost;Initial Catalog = Person;Integrated Security=True;"))
             {
-                var li = db.Query<Person>("Select * from Person").ToList();
-                return View();
+                var li = db.Query<Person>("Select * from Persons").ToList();
+                return View(li);
             }
         }
 

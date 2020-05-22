@@ -1,5 +1,26 @@
-﻿
+﻿@model List<PersonMvc.Models.Person>
 @{
     ViewData["Title"] = "Home Page";
 }
 
+<table class="table table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>MiddleName</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+        <tr>
+            <td>@x.Id</td>
+            <td>@x.FirstName</td>
+            <td>@x.LastName</td>
+            <td>@x.MiddleName</td>
+        </tr>
+        }
+    </tbody>
+</table>
