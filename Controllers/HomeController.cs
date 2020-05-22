@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PersonMvc.Models;
+using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace PersonMvc.Controllers
 {
@@ -12,13 +15,16 @@ namespace PersonMvc.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            using (IDbConnection db = new SqlConnection("Data Source = localhost;Initial Catalog = Person;Integrated Security=True;"))
+            {
+                var li = db.Query<Person>("Select * from Person").ToList();
+                return View();
+            }
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
