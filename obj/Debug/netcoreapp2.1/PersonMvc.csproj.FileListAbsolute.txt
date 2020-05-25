@@ -30,3 +30,5 @@ C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\PersonM
 C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\PersonMvc.dll
 C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\PersonMvc.pdb
 C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\PersonMvc.csproj.CopyComplete
+C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\Razor\Views\Home\More.g.cshtml.cs
+C:\Users\GhostX\source\repos\PersonMvc\PersonMvc\obj\Debug\netcoreapp2.1\Razor\Views\Home\Add.g.cshtml.cs

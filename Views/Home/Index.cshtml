@@ -2,7 +2,12 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<a asp-action="Add" asp-controller="Home" class="btn btn-success">Add</a>
+<form asp-action="Index" asp-controller="Home" asp-antiforgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <input type="text" name="searchtext" class="form-control"/>
+    <input type="submit"/>
+</form>
 <table class="table table-bordered table-condensed table-hover">
     <thead>
         <tr>
@@ -20,6 +25,7 @@
             <td>@x.FirstName</td>
             <td>@x.LastName</td>
             <td>@x.MiddleName</td>
+            <td><a asp-action="More" asp-controller="Home" asp-route-id="@x.Id" class="navbar-link">More</a></td>
         </tr>
         }
     </tbody>

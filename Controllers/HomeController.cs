@@ -13,12 +13,49 @@ namespace PersonMvc.Controllers
 {
     public class HomeController : Controller
     {
+        string ConStr = "Data Source = localhost;Initial Catalog = Person;Integrated Security=True;";
         public IActionResult Index()
         {
-            using (IDbConnection db = new SqlConnection("Data Source = localhost;Initial Catalog = Person;Integrated Security=True;"))
+            using (IDbConnection db = new SqlConnection(ConStr))
             {
-                var li = db.Query<Person>("Select * from Persons").ToList();
+                var li = db.Query<Person>("Select * from Person").ToList();
                 return View(li);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Index(string searchtext)
+        {
+            using (IDbConnection db = new SqlConnection(ConStr))
+            {
+                var li = db.Query<Person>($"Select * from Person where FirstName = '{searchtext}' or LastName = '{searchtext}' or MiddleName = '{searchtext}'").ToList();
+                return View(li);
+            }
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Person model)
+        {
+            using (IDbConnection db = new SqlConnection(ConStr))
+            {
+                db.Query($"Insert into Person(FirstName,LastName,MiddleName) values('{model.FirstName}','{model.LastName}','{model.MiddleName}')");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult More(int id)
+        {
+            using (IDbConnection db = new SqlConnection(ConStr))
+            {
+                var li = db.Query<Person>($"Select * From Person where Id = {id}").ToList();
+                var model = li.First();
+                return View(model);
             }
         }
 
